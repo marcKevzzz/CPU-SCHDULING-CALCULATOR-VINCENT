@@ -1,0 +1,298 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>CPU Scheduling Algorithm Simulator</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="toast-container position-fixed p-3" style="top: 3em; right: 0">
+      <div
+        class="toast align-items-center"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        id="liveToast"
+      >
+        <div class="d-flex">
+          <div class="toast-header text-danger pe-1 pt-2 fs-5">
+            <i class="bi bi-exclamation-circle"></i>
+          </div>
+          <div class="toast-body ps-2" id="toast-body">Invalid Input.</div>
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+      <div
+        class="toast align-items-center"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        id="liveToast1"
+      >
+        <div class="d-flex">
+          <div class="toast-header text-success pe-1 pt-2 fs-5">
+            <i class="bi bi-check2-all"></i>
+          </div>
+          <div class="toast-body ps-2" id="toast-body">
+            Successfully Generated
+          </div>
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row nav w-100">
+      <header class="header-bar flex-grow-1">
+        <div class="d-flex gap-2 align-items-center hide">
+          <div class="header-dots">●</div>
+          <div class="header-dots">●</div>
+          <div class="header-dots">●</div>
+        </div>
+        <h1 class="header-title">CPU SCHEDULING ALGORITHM SIMULATOR</h1>
+        <div class="header-icons d-flex align-items-center">
+          <button
+            type="button"
+            aria-label="Add"
+            class="btn p-0 m-0"
+            style="color: #ff7f50; font-size: 1.5rem; line-height: 1"
+          >
+            +
+          </button>
+        </div>
+      </header>
+      <i class="fas fa-cog hide"></i>
+      <i class="fas fa-user-circle hide"></i>
+    </div>
+
+    <main class="container py-3">
+      <div class="row align-items-center gy-3 reverse">
+        <div class="accordion col-auto wt" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header input-container ps-0">
+              <button
+                class="accordion-button p-1 shadow-none border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="false"
+                aria-controls="collapseOne"
+              >
+                <i class="fas fa-search me-2"></i>
+                <span id="selectedAlgorithm">Choose Algorithm</span>
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <ul
+                class="select-algorithm p-0 m-0 border rounded accordion-body"
+              >
+                <li class="algo" value="FCFS">FIRST COME FIRST SERVE</li>
+                <li class="algo" value="SJF">SHORTEST JOB FIRST</li>
+                <li class="algo" value="NPP">NON-PREEMPTIVE PRIORITY</li>
+                <li class="algo" value="PP">PREEMPTIVE PRIORITY</li>
+                <li class="algo" value="SRTF">SHORTEST REMAINING TIME FIRST</li>
+                <li class="algo" value="RR">ROUND ROBIN</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col d-flex flex-row align-items-center gap-2 end">
+          <h2 class="font-pacifico fs-2 mb-0 user-select-none">
+            Make Your Life Easier!
+          </h2>
+
+          <div class="col-auto d-flex justify-content-center">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/8b3bdc8c-5bc9-44f1-3b68-a73d00ccb79d.jpg"
+              alt="Icon of a CPU chip with pins on all four sides, black outline on transparent background"
+              width="40"
+              height="40"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row gy-3 mt-3 justify-content-center">
+        <div class="col-auto d-flex flex-column align-items-center flex-grow-1">
+          <div class="input-container">
+            <i class="fas fa-search"></i>
+            <span class="input-label">Input Arrival Time</span>
+            <span aria-label="Close" class="input-close"> × </span>
+          </div>
+          <input
+            type="text"
+            class="input-box mt-1"
+            placeholder="Ex. 0, 3, 2, 5....."
+          />
+        </div>
+        <div class="col-auto d-flex flex-column align-items-center flex-grow-1">
+          <div class="input-container">
+            <i class="fas fa-search"></i>
+            <span class="input-label">Input Burst Time</span>
+            <span aria-label="Close" class="input-close"> × </span>
+          </div>
+          <input
+            type="text"
+            class="input-box mt-1"
+            placeholder="Ex. 13, 17, 2, 9...."
+          />
+        </div>
+        <div
+          class="col-auto flex-column align-items-center flex-grow-1"
+          id="extraInputGroup"
+        >
+          <div class="input-container">
+            <i class="fas fa-search"></i>
+            <span class="input-label" id="extraInputLabel"
+              >Input Priority Time</span
+            >
+            <span aria-label="Close" class="input-close"> × </span>
+          </div>
+          <input
+            type="text"
+            id="meron"
+            class="input-box mt-1 extraInput"
+            placeholder="Ex. 1, 2, 3, 4...."
+          />
+        </div>
+      </div>
+
+      <div
+        class="d-flex align-items-center justify-content-center flex-wrap generate"
+      >
+        <button class="btn-generate py-2" id="calculate">Generate Table</button>
+      </div>
+
+      <div class="row mt-4 gy-4" id="rows">
+        <div
+          class="col-md-4 d-flex flex-column justify-content-center align-items-center"
+        >
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-star star-icon"></i>
+            <span class="section-title mb-0" id="title"
+              >NON - PREEMPTIVE PRIORITY</span
+            >
+          </div>
+          <table
+            class="table table-bordered border-dark"
+            id="processDisplayTable"
+          >
+            <thead id="tableHead"></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="col-md-4 d-flex flex-column align-items-center">
+          <div class="section-title mb-2">TURN-AROUND TIME:</div>
+          <div class="table-btn d-flex px-2">
+            <table class="table table-bordered border-dark" id="resultTable">
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-md-4 d-flex flex-column align-items-center">
+          <div class="section-title mb-2">WAITING TIME:</div>
+          <div class="table-btn d-flex px-2">
+            <table
+              class="table table-bordered border-dark"
+              id="resultTableWaitingTime"
+            >
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2 gy-4" id="rows1">
+        <div class="col-md-4 d-flex flex-column align-items-center">
+          <div class="section-title mb-2 d-flex justify-content-center">
+            Timeline:
+          </div>
+          <div id="timeline" class="d-flex flex-row mt-1"></div>
+        </div>
+
+        <div
+          class="col-md-4 d-flex flex-column align-items-center"
+          style="overflow-x: auto"
+        >
+          <div class="section-title mb-2 d-flex justify-content-center">
+            Gantt Chart:
+          </div>
+
+          <div id="ganttChart" class="px-3 mt-2">
+            <div id="head" class="d-flex flex-row"></div>
+            <div id="gbody" class="d-flex flex-row"></div>
+            <div id="tail" class="d-flex flex-row"></div>
+            <div id="queue" class="d-flex flex-row"></div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-4 d-flex flex-column align-items-center cpu"
+          style="overflow-x: auto"
+        >
+          <div class="section-title d-flex justify-content-center">
+            CPU Utilization %:
+          </div>
+          <div class="cpuResult d-flex gap-3 px-2 fw-normal" id="cpuResult">
+            <div class="d-flex flex-column cpuComp">
+              <p id="process" class="text-center fw-normal"></p>
+              <div class="cpu-vrline"></div>
+              <p id="completion" class="fw-normal"></p>
+            </div>
+            <p
+              class="d-flex justify-content-center align-items-center fw-normal"
+            >
+              <span id="cpuUtil"></span>
+              <span
+                id="cpuTotal"
+                style="height: fit-content"
+                class="px-2 bg-blue ms-2 fw-normal"
+              ></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end mt-4 hides" id="check">
+        <button class="success-btn" type="button" disabled>
+          <i class="fas fa-check"></i>
+          <span>Successfully Generated</span>
+        </button>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
