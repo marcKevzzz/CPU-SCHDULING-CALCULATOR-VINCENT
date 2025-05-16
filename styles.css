@@ -338,7 +338,8 @@ body {
   overflow: hidden;
   padding: 2rem;
   background-color: var(--bg-main);
-  max-width: fit-content;
+  max-width: 20rem;
+  max-width: 100%;
   overflow-x: auto;
 }
 
@@ -562,6 +563,16 @@ body {
 
   body #font-pacificos {
     font-size: 2.5em !important;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .timeline-vrline {
+    width: calc(110% - 140px);
+    border-top: 1px solid var(--primary-dark);
+    position: absolute;
+    top: 50%;
+    left: calc(15% + 10px);
   }
 }
 
