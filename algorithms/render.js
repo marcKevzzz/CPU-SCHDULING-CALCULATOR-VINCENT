@@ -118,7 +118,7 @@ export function renderGanttChart(options = {}, ganttChart) {
   // Body (Gantt process blocks)
   timelineProcess.forEach((label) => {
     const box = document.createElement("div");
-    box.classList.add("border", "p-1", "text-center", "border-dark", "oo");
+    box.classList.add("border", "p-1", "text-center", "oo");
     box.style.width = "40px";
     box.style.minWidth = "40px";
     box.innerHTML = `${label}`;
@@ -290,9 +290,9 @@ export function renderResultTableTurnaround(result) {
     const row = `
       <tr>
         <td>Tt${process++}</td>
-        <td class="d-flex flex-row">${r.completion}  -   ${r.arrival}  =   ${
-      r.turnaround
-    }</td>
+        <td class="d-flex flex-row align-items-center">${r.completion}  -   ${
+      r.arrival
+    }  =   ${r.turnaround}</td>
       </tr>
     `;
     ave = (ave || 0) + r.turnaround;
@@ -301,7 +301,7 @@ export function renderResultTableTurnaround(result) {
   });
   const ttave = `<tr>
   <td>TTave</td>
-  <td class="d-flex flex-row">${ave}  /   ${
+  <td class="d-flex flex-row align-items-center">${ave}  /   ${
     process - 1
   }  =   <div class="bg-blue px-2 " style="height: fit-content">${(
     ave /
@@ -338,7 +338,7 @@ export function renderResultTableWaiting(result) {
   });
   const ttave = `<tr>
   <td>WTave</td>
-  <td class="d-flex flex-row">${ave}  /   ${
+  <td class="d-flex flex-row align-items-center">${ave}  /   ${
     process - 1
   }  =   <div class="bg-blue px-2 " style="height: fit-content">${(
     ave /
