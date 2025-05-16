@@ -20,7 +20,15 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="toast-container position-fixed p-3" style="top: 3em; right: 0">
@@ -91,13 +99,13 @@
       <i class="fas fa-user-circle hide"></i>
     </div>
 
-    <main class="container py-3">
-      <div class="row align-items-center gy-3 reverse">
-        <div class="accordion col-auto wt" id="accordionExample">
+    <main class="container pt-3">
+      <div class="d-flex align-items-start gy-3" id="cont">
+        <div class="accordion wt" id="accordionExample">
           <div class="accordion-item">
-            <h2 class="accordion-header input-container ps-0">
+            <h2 class="accordion-header input-container">
               <button
-                class="accordion-button p-1 shadow-none border-0"
+                class="accordion-button p-1 shadow-none border-0 shadow-none"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseOne"
@@ -113,9 +121,7 @@
               class="accordion-collapse collapse"
               data-bs-parent="#accordionExample"
             >
-              <ul
-                class="select-algorithm p-0 m-0 border rounded accordion-body"
-              >
+              <ul class="select-algorithm p-0 m-0 border-0 accordion-body">
                 <li class="algo" value="FCFS">FIRST COME FIRST SERVE</li>
                 <li class="algo" value="SJF">SHORTEST JOB FIRST</li>
                 <li class="algo" value="NPP">NON-PREEMPTIVE PRIORITY</li>
@@ -127,24 +133,20 @@
           </div>
         </div>
 
-        <div class="col d-flex flex-row align-items-center gap-2 end">
-          <h2 class="font-pacifico fs-2 mb-0 user-select-none">
+        <div
+          class="d-flex flex-row flex-grow-1 align-items-center gap-2 end mt-2"
+        >
+          <div class="mx-auto mb-0" id="font-pacificos">
             Make Your Life Easier!
-          </h2>
-
-          <div class="col-auto d-flex justify-content-center">
-            <img
-              src="https://storage.googleapis.com/a1aa/image/8b3bdc8c-5bc9-44f1-3b68-a73d00ccb79d.jpg"
-              alt="Icon of a CPU chip with pins on all four sides, black outline on transparent background"
-              width="40"
-              height="40"
-            />
           </div>
+
+          <i class="fas fa-star fs-3 star-icon "></i>
         </div>
       </div>
 
-      <div class="row gy-3 mt-3 justify-content-center">
-        <div class="col-auto d-flex flex-column align-items-center flex-grow-1">
+      <div class="row gy-3 mt-3 justify-content-center gap-3">
+        <!-- Arrival Time -->
+        <div class="col-auto d-flex flex-column flex-grow-1">
           <div class="input-container">
             <i class="fas fa-search"></i>
             <span class="input-label">Input Arrival Time</span>
@@ -152,11 +154,19 @@
           </div>
           <input
             type="text"
-            class="input-box mt-1"
+            class="input-box"
             placeholder="Ex. 0, 3, 2, 5....."
+            list="arrivalTimeSuggestions"
           />
+          <datalist id="arrivalTimeSuggestions">
+            <option value="0, 1, 2, 3, 4"></option>
+            <option value="0, 3, 2, 5"></option>
+            <option value="1, 2, 3, 4, 5"></option>
+          </datalist>
         </div>
-        <div class="col-auto d-flex flex-column align-items-center flex-grow-1">
+
+        <!-- Burst Time -->
+        <div class="col-auto d-flex flex-column flex-grow-1">
           <div class="input-container">
             <i class="fas fa-search"></i>
             <span class="input-label">Input Burst Time</span>
@@ -164,14 +174,19 @@
           </div>
           <input
             type="text"
-            class="input-box mt-1"
+            class="input-box"
             placeholder="Ex. 13, 17, 2, 9...."
+            list="burstTimeSuggestions"
           />
+          <datalist id="burstTimeSuggestions">
+            <option value="2, 5, 2, 9, 3"></option>
+            <option value="10, 5, 8, 7"></option>
+            <option value="4, 6, 3, 2"></option>
+          </datalist>
         </div>
-        <div
-          class="col-auto flex-column align-items-center flex-grow-1"
-          id="extraInputGroup"
-        >
+
+        <!-- Priority Time -->
+        <div class="col-auto flex-column flex-grow-1" id="extraInputGroup">
           <div class="input-container">
             <i class="fas fa-search"></i>
             <span class="input-label" id="extraInputLabel"
@@ -182,9 +197,15 @@
           <input
             type="text"
             id="meron"
-            class="input-box mt-1 extraInput"
+            class="input-box extraInput"
             placeholder="Ex. 1, 2, 3, 4...."
+            list="priorityTimeSuggestions"
           />
+          <datalist id="priorityTimeSuggestions">
+            <option value="1, 2, 3, 4, 5"></option>
+            <option value="3, 1, 2, 4"></option>
+            <option value="5, 3, 1, 2"></option>
+          </datalist>
         </div>
       </div>
 
@@ -193,64 +214,64 @@
       >
         <button class="btn-generate py-2" id="calculate">Generate Table</button>
       </div>
-
-      <div class="row mt-4 gy-4" id="rows">
+    </main>
+    <main class="containers bg-c">
+      <div
+        class="row flex-row mt-4 gy-4 gap-1 justify-content-center"
+        id="rows"
+      >
         <div
-          class="col-md-4 d-flex flex-column justify-content-center align-items-center"
+          class="col d-flex flex-column justify-content-center align-items-center"
         >
-          <div class="d-flex align-items-center mb-3">
-            <i class="fas fa-star star-icon"></i>
-            <span class="section-title mb-0" id="title"
+          <div class="d-flex align-items-center" style="position: relative">
+            <i
+              class="fas fa-star fs-3 star-icon"
+              style="position: absolute; top: 15px; left: -30px"
+            ></i>
+            <span class="section-title" id="title"
               >NON - PREEMPTIVE PRIORITY</span
             >
           </div>
           <table
-            class="table table-bordered border-dark"
+            class="table table-borderes border-2 border-dark"
             id="processDisplayTable"
           >
             <thead id="tableHead"></thead>
-            <tbody id="tableBody"></tbody>
+            <tbody id="tableBody" class="bg-light"></tbody>
           </table>
         </div>
 
-        <div class="col-md-4 d-flex flex-column align-items-center">
-          <div class="section-title mb-2">TURN-AROUND TIME:</div>
-          <div class="table-btn d-flex px-2">
-            <table class="table table-bordered border-dark" id="resultTable">
-              <tbody></tbody>
-            </table>
-          </div>
+        <div class="col d-flex flex-column align-items-center">
+          <div class="section-title">TURN-AROUND TIME:</div>
+          <table class="table border-dark" id="resultTable">
+            <tbody></tbody>
+          </table>
         </div>
 
-        <div class="col-md-4 d-flex flex-column align-items-center">
-          <div class="section-title mb-2">WAITING TIME:</div>
-          <div class="table-btn d-flex px-2">
-            <table
-              class="table table-bordered border-dark"
-              id="resultTableWaitingTime"
-            >
-              <tbody></tbody>
-            </table>
-          </div>
+        <div class="col d-flex flex-column align-items-center">
+          <div class="section-title">WAITING TIME:</div>
+          <table class="table border-dark" id="resultTableWaitingTime">
+            <tbody></tbody>
+          </table>
         </div>
       </div>
-      <div class="row mt-2 gy-4" id="rows1">
-        <div class="col-md-4 d-flex flex-column align-items-center">
-          <div class="section-title mb-2 d-flex justify-content-center">
-            Timeline:
+      <div class="row mt-5 gy-4 gap-1 justify-content-center" id="rows1">
+        <div class="col d-flex flex-column align-items-center">
+          <div class="section-title d-flex justify-content-center">
+            TIMELINE:
           </div>
           <div id="timeline" class="d-flex flex-row mt-1"></div>
         </div>
 
         <div
-          class="col-md-4 d-flex flex-column align-items-center"
+          class="col d-flex flex-column align-items-center"
           style="overflow-x: auto"
         >
-          <div class="section-title mb-2 d-flex justify-content-center">
-            Gantt Chart:
+          <div class="section-title d-flex justify-content-center">
+            GANTT CHART
           </div>
 
-          <div id="ganttChart" class="px-3 mt-2">
+          <div id="ganttChart" class="mt-2">
             <div id="head" class="d-flex flex-row"></div>
             <div id="gbody" class="d-flex flex-row"></div>
             <div id="tail" class="d-flex flex-row"></div>
@@ -259,13 +280,13 @@
         </div>
 
         <div
-          class="col-md-4 d-flex flex-column align-items-center cpu"
+          class="col d-flex flex-column align-items-center cpu"
           style="overflow-x: auto"
         >
           <div class="section-title d-flex justify-content-center">
-            CPU Utilization %:
+            CPU UTILIZATION %
           </div>
-          <div class="cpuResult d-flex gap-3 px-2 fw-normal" id="cpuResult">
+          <div class="cpuResult d-flex gap-3 fw-normal" id="cpuResult">
             <div class="d-flex flex-column cpuComp">
               <p id="process" class="text-center fw-normal"></p>
               <div class="cpu-vrline"></div>
@@ -284,15 +305,28 @@
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-end mt-4 hides" id="check">
-        <button class="success-btn" type="button" disabled>
-          <i class="fas fa-check"></i>
-          <span>Successfully Generated</span>
-        </button>
-      </div>
+      <div class="d-flex justify-content-end mt-4 hides" id="check"></div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js" type="module"></script>
+    <script>
+      // Select all list items inside the algorithm selector
+      document.querySelectorAll(".select-algorithm .algo").forEach((item) => {
+        item.addEventListener("click", function () {
+          const selectedText = this.textContent;
+          document.getElementById("selectedAlgorithm").textContent =
+            selectedText;
+
+          // Close the accordion by removing the 'show' class
+          const collapseEl = document.getElementById("collapseOne");
+          if (collapseEl.classList.contains("show")) {
+            new bootstrap.Collapse(collapseEl, {
+              toggle: true,
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
