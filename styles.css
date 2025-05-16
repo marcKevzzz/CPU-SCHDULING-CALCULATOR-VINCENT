@@ -338,7 +338,7 @@ body {
   overflow: hidden;
   padding: 2rem;
   background-color: var(--bg-main);
-  max-width: fit-content;
+  max-width: 100%;
   overflow-x: auto;
 }
 
