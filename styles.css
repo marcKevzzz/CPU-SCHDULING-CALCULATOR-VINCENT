@@ -338,7 +338,7 @@ body {
   overflow: hidden;
   padding: 2rem;
   background-color: var(--bg-main);
-  max-width: 100%;
+  max-width: fit-content;
   overflow-x: auto;
 }
 
@@ -360,7 +360,7 @@ body {
 }
 
 .timeline-vrline {
-  width: calc(115% - 130px);
+  width: calc(100% - 130px);
   border-top: 1px solid var(--primary-dark);
   position: absolute;
   top: 50%;
