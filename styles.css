@@ -360,7 +360,7 @@ body {
 }
 
 .timeline-vrline {
-  width: calc(100% - 130px);
+  width: calc(110% - 140px);
   border-top: 1px solid var(--primary-dark);
   position: absolute;
   top: 50%;
