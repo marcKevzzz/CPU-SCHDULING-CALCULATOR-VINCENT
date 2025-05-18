@@ -114,8 +114,7 @@ export function calculatePP(processes) {
       });
     }
   }
-  console.log(processes);
-  console.log(ganttChart);
+
   return {
     result: completed,
     ganttChart,

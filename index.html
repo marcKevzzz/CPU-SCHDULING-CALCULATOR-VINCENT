@@ -286,22 +286,29 @@
           <div class="section-title d-flex justify-content-center">
             CPU UTILIZATION %
           </div>
-          <div class="cpuResult d-flex gap-3 fw-normal" id="cpuResult">
-            <div class="d-flex flex-column cpuComp">
-              <p id="process" class="text-center fw-normal"></p>
-              <div class="cpu-vrline"></div>
-              <p id="completion" class="fw-normal"></p>
-            </div>
-            <p
-              class="d-flex justify-content-center align-items-center fw-normal"
-            >
-              <span id="cpuUtil"></span>
-              <span
-                id="cpuTotal"
-                style="height: fit-content"
-                class="px-2 bg-blue ms-2 fw-normal"
-              ></span>
-            </p>
+          <div class="cpuResult d-flex gap-3 fw-normal align-items-center justify-content-center" id="cpuResult">
+            <div class="d-flex flex-column align-items-center justify-content-center cpuComp">
+                  <p id="process" class="text-center fw-normal fs-6 mb-1"></p>
+                  <div class="cpu-vrline "></div>
+                  <p id="completion" class="p-0 m-0 fs-6 fw-normal"></p>
+                </div>
+                <p class="d-flex justify-content-center align-items-center mb-0 fs-6 fw-normal">
+                  <span id="waladin" class="p-0">  </span>
+                   <div
+                        class="d-flex flex-column align-items-center justify-items-center justify-content-center"
+                      >
+                        <div
+                          class="d-flex border border-2 border-top-0 border-top-0 border-start-0 border-end-0 borders  pb-1 "
+                          id="adds"
+                          style="width: 100%;"
+                        >
+                        </div>
+                        <span class="inline-block pt-1" id="burstt"> </span>
+                      </div>
+                      <span id="wala" class="d-flex align-items-center"></span>
+                  <div id="cpuTotal" style="height: fit-content"
+                    class="px-2 bg-blue rounded ms-2 fs-6 fw-normal py-auto justify-content-center align-items-center d-flex"></div>
+                </p>
           </div>
         </div>
       </div>

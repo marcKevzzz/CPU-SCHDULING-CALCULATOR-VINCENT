@@ -424,7 +424,7 @@ body {
   width: 100%;
   border-top: 2px solid var(--primary-dark);
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 0;
 }
 
@@ -574,6 +574,10 @@ body {
     top: 50%;
     left: calc(15% + 10px);
   }
+}
+
+.borders {
+  border-color: var(--primary-dark) !important;
 }
 
 /* Scrollbar styling */
